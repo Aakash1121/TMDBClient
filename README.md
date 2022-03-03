@@ -8,7 +8,7 @@ Features:
 3) Popular TV Shows Cards with regular Updates
 
 
-<b>FrameeWork Used:</b>
+<b>FrameWork Used:</b>
 
   1) Dagger 2
   2) Cororutines
