@@ -3,9 +3,9 @@
 A TMDB Mobile App made using MVVM Architecture
 
 Features:
-1) Popular Artists
-2) Popular Movies
-3) Popular TV Shows
+1) Provides Popular Artists Cards with regular Updates
+2) Popular Movies Cards with regular Updates
+3) Popular TV Shows Cards with regular Updates
 
 
 <b>FrameeWork Used:</b>
