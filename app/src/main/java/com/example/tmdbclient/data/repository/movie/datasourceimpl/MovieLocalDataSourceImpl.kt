@@ -23,4 +23,5 @@ class MovieLocalDataSourceImpl(private val movieDAO: MovieDAO): MovieLocalDataSo
          movieDAO.deleteAllMovies()
         }
     }
+
 }

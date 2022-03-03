@@ -1,0 +1,30 @@
+package com.example.tmdbclient.presentation.di.core
+
+import com.example.tmdbclient.presentation.di.artist.ArtistSubComponent
+import com.example.tmdbclient.presentation.di.movie.MovieSubComponent
+import com.example.tmdbclient.presentation.di.tvshow.TvShowsSubComponent
+import dagger.Component
+import javax.inject.Singleton
+
+@Singleton
+@Component(
+    modules = [
+        AppModule::class,
+        NetModule::class,
+        DataBaseModule::class,
+        UseCaseModule::class,
+        RepositoryModule::class,
+        RemoteDataModule::class,
+        RemoteDataModule::class,
+        RemoteDataModule::class,
+        LocalDataModule::class,
+        CacheDataModule::class
+    ]
+)
+interface AppComponent {
+
+    fun artistSubComponent(): ArtistSubComponent.Factory
+    fun movieSubComponent(): MovieSubComponent.Factory
+    fun tvShowsSubComponent(): TvShowsSubComponent.Factory
+
+}
