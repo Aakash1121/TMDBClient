@@ -1,4 +1,4 @@
-package com.example.tmdbclient.presentation.movie
+package com.example.tmdbclient.presentation.artist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,17 +6,18 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tmdbclient.R
+import com.example.tmdbclient.data.model.artist.Artist
 import com.example.tmdbclient.data.model.movie.Movie
 import com.example.tmdbclient.databinding.ListItemBinding
 
 
-class MovieAdapter : RecyclerView.Adapter<MyViewHolder>() {
+class ArtistsAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
-    private val movieList = ArrayList<Movie>()
+    private val artistsList = ArrayList<Artist>()
 
-    fun setList(movies: List<Movie>) {
-        movieList.clear()
-        movieList.addAll(movies)
+    fun setList(artists: List<Artist>) {
+        artistsList.clear()
+        artistsList.addAll(artists)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -31,22 +32,22 @@ class MovieAdapter : RecyclerView.Adapter<MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(movieList[position])
+        holder.bind(artistsList[position])
     }
 
     override fun getItemCount(): Int {
-        return movieList.size
+        return artistsList.size
     }
 }
 
 class MyViewHolder(val binding: ListItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(movie: Movie) {
-        binding.titleTextView.text = movie.title
-        binding.descriptionTextView.text = movie.overview
+    fun bind(artist: Artist) {
+        binding.titleTextView.text = artist.name
+        binding.descriptionTextView.text ="Popularity: "+ artist.popularity.toString()
 
-        val posterUrl: String? = "https://image.tmdb.org/t/p/w500" + movie.posterPath
+        val posterUrl: String? = "https://image.tmdb.org/t/p/w500" + artist.profilePath
         Glide.with(binding.imageView.context).load(posterUrl).into(binding.imageView)
     }
 

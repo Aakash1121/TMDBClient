@@ -1,4 +1,4 @@
-package com.example.tmdbclient.presentation.movie
+package com.example.tmdbclient.presentation.tvShow
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,16 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tmdbclient.R
 import com.example.tmdbclient.data.model.movie.Movie
+import com.example.tmdbclient.data.model.tvshow.TvShow
 import com.example.tmdbclient.databinding.ListItemBinding
 
+class TvShowsAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
-class MovieAdapter : RecyclerView.Adapter<MyViewHolder>() {
+    private val tvShowList = ArrayList<TvShow>()
 
-    private val movieList = ArrayList<Movie>()
-
-    fun setList(movies: List<Movie>) {
-        movieList.clear()
-        movieList.addAll(movies)
+    fun setList(tvShows: List<TvShow>) {
+        tvShowList.clear()
+        tvShowList.addAll(tvShows)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -31,22 +31,22 @@ class MovieAdapter : RecyclerView.Adapter<MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(movieList[position])
+        holder.bind(tvShowList[position])
     }
 
     override fun getItemCount(): Int {
-        return movieList.size
+        return tvShowList.size
     }
 }
 
 class MyViewHolder(val binding: ListItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(movie: Movie) {
-        binding.titleTextView.text = movie.title
-        binding.descriptionTextView.text = movie.overview
+    fun bind(tvShow: TvShow) {
+        binding.titleTextView.text = tvShow.name
+        binding.descriptionTextView.text = tvShow.overview
 
-        val posterUrl: String? = "https://image.tmdb.org/t/p/w500" + movie.posterPath
+        val posterUrl: String? = "https://image.tmdb.org/t/p/w500" + tvShow.posterPath
         Glide.with(binding.imageView.context).load(posterUrl).into(binding.imageView)
     }
 
